@@ -35,9 +35,11 @@ if (config.latitude && config.longitude) {
   get_data_from_server();
 } else {
   update_latt_long_location();
-  if (!config.latitude && !config.longitude) {
-    update_latt_long_ip();
-  }
+  setTimeout(() => {
+    if (!config.latitude && !config.longitude) {
+      update_latt_long_ip();
+    }
+  }, 100);
 }
 
 // Clock Block
