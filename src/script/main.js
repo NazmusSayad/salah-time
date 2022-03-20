@@ -13,20 +13,23 @@ const update_latt_long_ip = () => {
     config.longitude = data.longitude;
     cookie("la", data.latitude, 99999);
     cookie("lo", data.longitude, 99999);
+    console.log('Location by IP')
     get_data_from_server();
   });
 };
 
 const update_latt_long_location = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.watchPosition((position) => {
-      config.latitude = position.coords.latitude;
-      config.longitude = position.coords.longitude;
-      cookie("la", position.coords.latitude, 99999);
-      cookie("lo", position.coords.longitude, 99999);
-      get_data_from_server();
-    });
-  }
+  navigator.geolocation.getCurrentPosition((position) => {
+    if (!navigator.geolocation) {
+      return;
+    }
+    config.latitude = position.coords.latitude;
+    config.longitude = position.coords.longitude;
+    cookie("la", position.coords.latitude, 99999);
+    cookie("lo", position.coords.longitude, 99999);
+    console.log('Location by Location')
+    get_data_from_server();
+  });
 };
 
 const get_data_from_server = () => {
