@@ -1,29 +1,30 @@
 const config = {
   method: cookie("m") ? cookie("m") : 1,
   juristic: cookie("j") ? cookie("j") : 0,
-  latitude: 22,
-  longitude: 23,
+  latitude: cookie("la") ? cookie("la") : null,
+  longitude: cookie("lo") ? cookie("lo") : null,
   data: null,
   updated: false,
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
 }
 
-if (!config.updated && navigator.geolocation) {
+if (!config.latitude && !config.longitude && navigator.geolocation) {
   navigator.geolocation.watchPosition((position) => {
     config.latitude = position.coords.latitude
     config.longitude = position.coords.longitude
-    config.updated = true
+    cookie("la", position.coords.latitude, 99999)
+    cookie("lo", position.coords.longitude, 99999)
     get_data_from_server()
 
   })
 }
 
-if (!config.updated) {
-  json("https://ipinfo.io/json", (data) => {
-    const ll = data.loc.split(',')
-    config.latitude = ll[0]
-    config.longitude = ll[1]
-    config.updated = true
+if (!config.latitude && !config.longitude) {
+  json("https://json.geoiplookup.io", (data) => {
+    config.latitude = data.latitude
+    config.longitude = data.longitude
+    cookie("la", data.latitude, 99999)
+    cookie("lo", data.longitude, 99999)
     get_data_from_server()
   })
 }
