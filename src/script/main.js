@@ -34,6 +34,7 @@ const get_data_from_server = () => {
   json(
     `https://www.islamicfinder.us/index.php/api/prayer_times/?timezone=${config.timezone}&time_format=1&high_latitude=0&latitude=${config.latitude}&longitude=${config.longitude}&method=${config.method}&juristic=${config.juristic}`,
     (data) => {
+      console.log(data)
       data = data.results;
 
       for (let key in data) {

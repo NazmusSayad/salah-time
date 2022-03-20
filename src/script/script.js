@@ -18,21 +18,23 @@ const main_section = {
     date_all: main_section.clock.querySelector("#clock .date"),
   };
 
-if (config.latitude && config.longitude) {
-  get_data_from_server();
-} else {
-  navigator.geolocation.watchPosition(
-    (position) => {
-      update_latt_long_config(
-        position.coords.latitude,
-        position.coords.longitude
-      );
-    },
-    () => {
-      update_latt_long_ip();
-    }
-  );
-}
+(()=>{
+  if (config.latitude && config.longitude) {
+    get_data_from_server();
+  } else {
+    navigator.geolocation.watchPosition(
+      (position) => {
+        update_latt_long_config(
+          position.coords.latitude,
+          position.coords.longitude
+        );
+      },
+      () => {
+        update_latt_long_ip();
+      }
+    );
+  }
+})()
 
 // Clock Block
 setfirstDate();
