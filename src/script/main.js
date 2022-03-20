@@ -6,7 +6,11 @@ const config = {
   data: cookie.get("data") ? JSON.parse(cookie.get("data")) : null,
   data_settings: cookie.get("data_settings")
     ? JSON.parse(cookie.get("data_settings"))
-    : null,
+    : {
+        latitude: null,
+        longitude: null,
+        date: null,
+      },
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 };
 
