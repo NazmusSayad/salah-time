@@ -4,7 +4,7 @@ const main_section = {
   },
   salah_times__element = {
     Fajr: main_section.salah_times.querySelector("#salah-time .Fajr"),
-    Sunrise: main_section.salah_times.querySelector("#salah-time .Sunrise"),
+    Duha: main_section.salah_times.querySelector("#salah-time .Duha"),
     Dhuhr: main_section.salah_times.querySelector("#salah-time .Dhuhr"),
     Asr: main_section.salah_times.querySelector("#salah-time .Asr"),
     Maghrib: main_section.salah_times.querySelector("#salah-time .Maghrib"),

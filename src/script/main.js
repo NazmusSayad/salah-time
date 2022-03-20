@@ -1,17 +1,20 @@
 const config = {
-  method: cookie("m") ? cookie("m") : 1,
-  juristic: cookie("j") ? cookie("j") : 0,
-  latitude: cookie("la") ? cookie("la") : null,
-  longitude: cookie("lo") ? cookie("lo") : null,
-  data: null,
+  method: cookie.get("m") ? cookie.get("m") : 1,
+  juristic: cookie.get("j") ? cookie.get("j") : 0,
+  latitude: cookie.get("la") ? cookie.get("la") : null,
+  longitude: cookie.get("lo") ? cookie.get("lo") : null,
+  data: cookie.get("data") ? JSON.parse(cookie.get("data")) : null,
+  data_settings: cookie.get("data_settings")
+    ? JSON.parse(cookie.get("data_settings"))
+    : null,
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 };
 
 const update_latt_long_config = (latt, long) => {
   config.latitude = latt;
   config.longitude = long;
-  cookie("la", latt, 99999);
-  cookie("lo", long, 99999);
+  cookie.set("lo", long);
+  cookie.set("la", latt);
   get_data_from_server();
 };
 
@@ -31,18 +34,29 @@ const update_latt_long_ip = () => {
 };
 
 const get_data_from_server = () => {
+  if (
+    config.data_settings.latitude == config.latitude &&
+    config.data_settings.longitude == config.longitude &&
+    config.data_settings.date == new Date().toDateString()
+  ) {
+    console.log("uploaded");
+  }
   json(
     `https://www.islamicfinder.us/index.php/api/prayer_times/?timezone=${config.timezone}&time_format=1&high_latitude=0&latitude=${config.latitude}&longitude=${config.longitude}&method=${config.method}&juristic=${config.juristic}`,
     (data) => {
-      console.log(data)
       data = data.results;
-
       for (let key in data) {
         data[key] = data[key];
       }
-      data.Sunrise = data.Duha;
-      delete data.Duha;
+
       config.data = data;
+      config.data_settings = {
+        latitude: config.latitude,
+        longitude: config.longitude,
+        date: new Date().toDateString(),
+      };
+      cookie.set("data", JSON.stringify(config.data));
+      cookie.set("data_settings", JSON.stringify(config.data_settings));
       update_page();
     }
   );
