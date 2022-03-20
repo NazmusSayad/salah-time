@@ -29,7 +29,7 @@ const update_latt_long_ip = () => {
 };
 
 const get_data_from_server = () => {
-  if (config.data && config.data_settings === config.latitude + config.longitude + new Date().toDateString()) {
+  if (config.data_settings === config.latitude + config.longitude + new Date().toDateString()) {
     update_page();
     console.log("uploaded");
     return;
