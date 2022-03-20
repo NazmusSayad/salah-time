@@ -4,30 +4,37 @@ const config = {
   latitude: cookie("la") ? cookie("la") : null,
   longitude: cookie("lo") ? cookie("lo") : null,
   data: null,
-  updated: false,
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
 }
 
-if (!config.latitude && !config.longitude && navigator.geolocation) {
-  navigator.geolocation.watchPosition((position) => {
-    config.latitude = position.coords.latitude
-    config.longitude = position.coords.longitude
-    cookie("la", position.coords.latitude, 99999)
-    cookie("lo", position.coords.longitude, 99999)
-    get_data_from_server()
+if (config.latitude && config.longitude) {
 
-  })
+  get_data_from_server()
+
+} else {
+
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition((position) => {
+      config.latitude = position.coords.latitude
+      config.longitude = position.coords.longitude
+      cookie("la", position.coords.latitude, 99999)
+      cookie("lo", position.coords.longitude, 99999)
+      get_data_from_server()
+    })
+  }
+  if (!config.latitude && !config.longitude) {
+    json("https://json.geoiplookup.io", (data) => {
+      config.latitude = data.latitude
+      config.longitude = data.longitude
+      cookie("la", data.latitude, 99999)
+      cookie("lo", data.longitude, 99999)
+      get_data_from_server()
+    })
+  }
 }
 
-if (!config.latitude && !config.longitude) {
-  json("https://json.geoiplookup.io", (data) => {
-    config.latitude = data.latitude
-    config.longitude = data.longitude
-    cookie("la", data.latitude, 99999)
-    cookie("lo", data.longitude, 99999)
-    get_data_from_server()
-  })
-}
+
+
 
 const get_data_from_server = () => {
   json(
