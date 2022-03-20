@@ -7,6 +7,28 @@ const config = {
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 };
 
+const update_latt_long_ip = () => {
+  json("https://json.geoiplookup.io", (data) => {
+    config.latitude = data.latitude;
+    config.longitude = data.longitude;
+    cookie("la", data.latitude, 99999);
+    cookie("lo", data.longitude, 99999);
+    get_data_from_server();
+  });
+};
+
+const update_latt_long_location = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition((position) => {
+      config.latitude = position.coords.latitude;
+      config.longitude = position.coords.longitude;
+      cookie("la", position.coords.latitude, 99999);
+      cookie("lo", position.coords.longitude, 99999);
+      get_data_from_server();
+    });
+  }
+};
+
 const get_data_from_server = () => {
   json(
     `https://www.islamicfinder.us/index.php/api/prayer_times/?timezone=${config.timezone}&time_format=1&high_latitude=0&latitude=${config.latitude}&longitude=${config.longitude}&method=${config.method}&juristic=${config.juristic}`,
