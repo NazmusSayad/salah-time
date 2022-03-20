@@ -12,9 +12,9 @@
  */
 
 const main_section = {
-    salah_times: document.querySelector("#salah-time"),
-    clock: document.querySelector("#clock"),
-  },
+  salah_times: document.querySelector("#salah-time"),
+  clock: document.querySelector("#clock"),
+},
   salah_times__element = {
     Fajr: main_section.salah_times.querySelector("#salah-time .Fajr"),
     Sunrise: main_section.salah_times.querySelector("#salah-time .Sunrise"),
@@ -31,7 +31,42 @@ const main_section = {
     date_all: main_section.clock.querySelector("#clock .date"),
   }
 
+
+
+
+
+
+if (config.latitude && config.longitude) {
+
+  get_data_from_server()
+
+} else {
+
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition((position) => {
+      config.latitude = position.coords.latitude
+      config.longitude = position.coords.longitude
+      cookie("la", position.coords.latitude, 99999)
+      cookie("lo", position.coords.longitude, 99999)
+      get_data_from_server()
+    })
+  }
+  if (!config.latitude && !config.longitude) {
+    json("https://json.geoiplookup.io", (data) => {
+      config.latitude = data.latitude
+      config.longitude = data.longitude
+      cookie("la", data.latitude, 99999)
+      cookie("lo", data.longitude, 99999)
+      get_data_from_server()
+    })
+  }
+}
+
+
+// Clock Block
 setfirstDate()
+
+
 
 const loadInterval = window.setInterval(() => {
   if (!Math.round(new Date().getMilliseconds() / 100)) {
