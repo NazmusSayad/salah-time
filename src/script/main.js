@@ -6,7 +6,7 @@ const config = {
   data: cookie.get("data")
     ? JSON.parse(cookie.get("data"))
     : {
-        list: null,
+        results: null,
         settings: null,
       },
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -34,12 +34,12 @@ const update_latt_long_ip = () => {
 
 const get_data_from_server = () => {
   if (config.data.settings === config.latitude + config.longitude + new Date().toDateString()) {
-    return update_page();
+    update_page();
   } else {
     json(
       `https://www.islamicfinder.us/index.php/api/prayer_times/?timezone=${config.timezone}&time_format=1&high_latitude=0&latitude=${config.latitude}&longitude=${config.longitude}&method=${config.method}&juristic=${config.juristic}`,
       (data) => {
-        config.data.list = data.results;
+        config.data.results = data.results;
         config.data.settings = config.latitude + config.longitude + new Date().toDateString();
 
         cookie.set("data", JSON.stringify(config.data));
@@ -50,8 +50,8 @@ const get_data_from_server = () => {
 };
 
 const update_page = () => {
-  for (let key in config.data.list) {
-    salah_times__element[key].innerHTML = key + ":- " + config.data.list[key].replace(/%/gim, "").toUpperCase();
+  for (let key in config.data.results) {
+    salah_times__element[key].innerHTML = key + ":- " + config.data.results[key].replace(/%/gim, "").toUpperCase();
   }
 };
 
