@@ -6,11 +6,7 @@ const config = {
   data: cookie.get("data") ? JSON.parse(cookie.get("data")) : null,
   data_settings: cookie.get("data_settings")
     ? JSON.parse(cookie.get("data_settings"))
-    : {
-        latitude: null,
-        longitude: null,
-        date: null,
-      },
+    : null,
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 };
 
@@ -39,21 +35,19 @@ const update_latt_long_ip = () => {
 
 const get_data_from_server = () => {
   if (
-    config.data_settings.latitude == config.latitude &&
-    config.data_settings.longitude == config.longitude &&
-    config.data_settings.date == new Date().toDateString()
+    config.data &&
+    config.data_settings.latitude === config.latitude &&
+    config.data_settings.longitude === config.longitude &&
+    config.data_settings.date === new Date().toDateString()
   ) {
+    update_page();
     console.log("uploaded");
+    return;
   }
   json(
     `https://www.islamicfinder.us/index.php/api/prayer_times/?timezone=${config.timezone}&time_format=1&high_latitude=0&latitude=${config.latitude}&longitude=${config.longitude}&method=${config.method}&juristic=${config.juristic}`,
     (data) => {
-      data = data.results;
-      for (let key in data) {
-        data[key] = data[key];
-      }
-
-      config.data = data;
+      config.data = data.results;
       config.data_settings = {
         latitude: config.latitude,
         longitude: config.longitude,
