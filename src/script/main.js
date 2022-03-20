@@ -3,8 +3,12 @@ const config = {
   juristic: cookie.get("juristic") ? cookie.get("juristic") : 0,
   latitude: cookie.get("latitude") ? cookie.get("latitude") : null,
   longitude: cookie.get("longitude") ? cookie.get("longitude") : null,
-  data: cookie.get("data") ? JSON.parse(cookie.get("data")) : null,
-  data_settings: cookie.get("data_settings") ? JSON.parse(cookie.get("data_settings")) : null,
+  data: cookie.get("data")
+    ? JSON.parse(cookie.get("data"))
+    : {
+        list: null,
+        settings: null,
+      },
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 };
 
@@ -29,27 +33,25 @@ const update_latt_long_ip = () => {
 };
 
 const get_data_from_server = () => {
-  if (config.data_settings === config.latitude + config.longitude + new Date().toDateString()) {
-    update_page();
-    console.log("uploaded");
-    return;
-  }
-  json(
-    `https://www.islamicfinder.us/index.php/api/prayer_times/?timezone=${config.timezone}&time_format=1&high_latitude=0&latitude=${config.latitude}&longitude=${config.longitude}&method=${config.method}&juristic=${config.juristic}`,
-    (data) => {
-      config.data = data.results;
-      config.data_settings = config.latitude + config.longitude + new Date().toDateString();
+  if (config.data.settings === config.latitude + config.longitude + new Date().toDateString()) {
+    return update_page();
+  } else {
+    json(
+      `https://www.islamicfinder.us/index.php/api/prayer_times/?timezone=${config.timezone}&time_format=1&high_latitude=0&latitude=${config.latitude}&longitude=${config.longitude}&method=${config.method}&juristic=${config.juristic}`,
+      (data) => {
+        config.data.list = data.results;
+        config.data.settings = config.latitude + config.longitude + new Date().toDateString();
 
-      cookie.set("data", JSON.stringify(config.data));
-      cookie.set("data_settings", JSON.stringify(config.data_settings));
-      update_page();
-    }
-  );
+        cookie.set("data", JSON.stringify(config.data));
+        update_page();
+      }
+    );
+  }
 };
 
 const update_page = () => {
-  for (let key in config.data) {
-    salah_times__element[key].innerHTML = key + ":- " + config.data[key].replace(/%/gim, "").toUpperCase();
+  for (let key in config.data.list) {
+    salah_times__element[key].innerHTML = key + ":- " + config.data.list[key].replace(/%/gim, "").toUpperCase();
   }
 };
 
