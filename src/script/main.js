@@ -1,29 +1,24 @@
 const config = {
-  method: cookie.get("m") ? cookie.get("m") : 1,
-  juristic: cookie.get("j") ? cookie.get("j") : 0,
-  latitude: cookie.get("la") ? cookie.get("la") : null,
-  longitude: cookie.get("lo") ? cookie.get("lo") : null,
+  method: cookie.get("method") ? cookie.get("method") : 1,
+  juristic: cookie.get("juristic") ? cookie.get("juristic") : 0,
+  latitude: cookie.get("latitude") ? cookie.get("latitude") : null,
+  longitude: cookie.get("longitude") ? cookie.get("longitude") : null,
   data: cookie.get("data") ? JSON.parse(cookie.get("data")) : null,
-  data_settings: cookie.get("data_settings")
-    ? JSON.parse(cookie.get("data_settings"))
-    : null,
+  data_settings: cookie.get("data_settings") ? JSON.parse(cookie.get("data_settings")) : null,
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 };
 
 const update_latt_long_config = (latt, long) => {
   config.latitude = latt;
   config.longitude = long;
-  cookie.set("lo", long);
-  cookie.set("la", latt);
+  cookie.set("longitude", long);
+  cookie.set("latitude", latt);
   get_data_from_server();
 };
 
 const update_latt_long_location = () => {
   navigator.geolocation.watchPosition((position) => {
-    update_latt_long_config(
-      position.coords.latitude,
-      position.coords.longitude
-    );
+    update_latt_long_config(position.coords.latitude, position.coords.longitude);
   });
 };
 
@@ -34,12 +29,7 @@ const update_latt_long_ip = () => {
 };
 
 const get_data_from_server = () => {
-  if (
-    config.data &&
-    config.data_settings.latitude === config.latitude &&
-    config.data_settings.longitude === config.longitude &&
-    config.data_settings.date === new Date().toDateString()
-  ) {
+  if (config.data && config.data_settings === config.latitude + config.longitude + new Date().toDateString()) {
     update_page();
     console.log("uploaded");
     return;
@@ -48,11 +38,8 @@ const get_data_from_server = () => {
     `https://www.islamicfinder.us/index.php/api/prayer_times/?timezone=${config.timezone}&time_format=1&high_latitude=0&latitude=${config.latitude}&longitude=${config.longitude}&method=${config.method}&juristic=${config.juristic}`,
     (data) => {
       config.data = data.results;
-      config.data_settings = {
-        latitude: config.latitude,
-        longitude: config.longitude,
-        date: new Date().toDateString(),
-      };
+      config.data_settings = config.latitude + config.longitude + new Date().toDateString();
+
       cookie.set("data", JSON.stringify(config.data));
       cookie.set("data_settings", JSON.stringify(config.data_settings));
       update_page();
@@ -62,8 +49,7 @@ const get_data_from_server = () => {
 
 const update_page = () => {
   for (let key in config.data) {
-    salah_times__element[key].innerHTML =
-      key + ":- " + config.data[key].replace(/%/gim, "").toUpperCase();
+    salah_times__element[key].innerHTML = key + ":- " + config.data[key].replace(/%/gim, "").toUpperCase();
   }
 };
 
