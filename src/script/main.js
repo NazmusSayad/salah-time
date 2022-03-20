@@ -5,25 +5,24 @@ const config = {
   longitude: 23,
   data: null,
   updated: false,
+  timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
 }
 
 if (!config.updated && navigator.geolocation) {
   navigator.geolocation.watchPosition((position) => {
     config.latitude = position.coords.latitude
     config.longitude = position.coords.longitude
-    json("http://worldtimeapi.org/api/ip", (data) => {
-      config.timezone = data.timezone
-      config.updated = true
-      get_data_from_server()
-    })
+    config.updated = true
+    get_data_from_server()
+
   })
 }
 
 if (!config.updated) {
-  json("http://ip-api.com/json", (data) => {
-    config.latitude = data.lat
-    config.longitude = data.lon
-    config.timezone = data.timezone
+  json("https://ipinfo.io/json", (data) => {
+    const ll = data.loc.split(',')
+    config.latitude = ll[0]
+    config.longitude = ll[1]
     config.updated = true
     get_data_from_server()
   })
