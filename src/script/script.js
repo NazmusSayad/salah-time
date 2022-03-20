@@ -1,16 +1,3 @@
-/* ;(function () {
-  const output = { status: false }
-  if (navigator.geolocation) {
-    navigator.geolocation.watchPosition((position) => {
-      output.status = true
-      output.latitude = position.coords.latitude
-      output.longitude = position.coords.longitude
-    })
-  }
-  return output
-})()
- */
-
 const main_section = {
     salah_times: document.querySelector("#salah-time"),
     clock: document.querySelector("#clock"),
@@ -34,12 +21,17 @@ const main_section = {
 if (config.latitude && config.longitude) {
   get_data_from_server();
 } else {
-  update_latt_long_location();
-  setTimeout(() => {
-    if (!config.latitude && !config.longitude) {
+  navigator.geolocation.watchPosition(
+    (position) => {
+      update_latt_long_config(
+        position.coords.latitude,
+        position.coords.longitude
+      );
+    },
+    () => {
       update_latt_long_ip();
     }
-  }, 100);
+  );
 }
 
 // Clock Block

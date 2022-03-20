@@ -7,28 +7,26 @@ const config = {
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 };
 
-const update_latt_long_ip = () => {
-  json("https://json.geoiplookup.io", (data) => {
-    config.latitude = data.latitude;
-    config.longitude = data.longitude;
-    cookie("la", data.latitude, 99999);
-    cookie("lo", data.longitude, 99999);
-    console.log('Location by IP')
-    get_data_from_server();
-  });
+const update_latt_long_config = (latt, long) => {
+  config.latitude = latt;
+  config.longitude = long;
+  cookie("la", latt, 99999);
+  cookie("lo", long, 99999);
+  get_data_from_server();
 };
 
 const update_latt_long_location = () => {
-  navigator.geolocation.getCurrentPosition((position) => {
-    if (!navigator.geolocation) {
-      return;
-    }
-    config.latitude = position.coords.latitude;
-    config.longitude = position.coords.longitude;
-    cookie("la", position.coords.latitude, 99999);
-    cookie("lo", position.coords.longitude, 99999);
-    console.log('Location by Location')
-    get_data_from_server();
+  navigator.geolocation.watchPosition((position) => {
+    update_latt_long_config(
+      position.coords.latitude,
+      position.coords.longitude
+    );
+  });
+};
+
+const update_latt_long_ip = () => {
+  json("https://json.geoiplookup.io", (data) => {
+    update_latt_long_config(data.latitude, data.longitude);
   });
 };
 
