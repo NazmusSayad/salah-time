@@ -8,7 +8,7 @@
 
 html {
   scroll-behavior: smooth;
-  user-select: none;
+  // user-select: none;
   // font-size: 62.5%;
 }
 
@@ -32,3 +32,10 @@ input {
 
 // Import other Stylesheets
 @import "app";
+
+.active {
+  color: red;
+  & + .prayer {
+    color: blue;
+  }
+}
