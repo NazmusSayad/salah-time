@@ -2,23 +2,24 @@ const main_section = {
     salah_times: document.querySelector("#salah-time"),
     clock: document.querySelector("#clock"),
     next_prayer: document.querySelector("#next-prayer [-wrap---]"),
+    settings: document.querySelector("#settings"),
   },
   salah_times__element = {
-    Fajr: main_section.salah_times.querySelector("#salah-time .today.Fajr span"),
-    Sunrise: main_section.salah_times.querySelector("#salah-time .today.Sunrise span"),
-    Dhuhr: main_section.salah_times.querySelector("#salah-time .today.Dhuhr span"),
-    Asr: main_section.salah_times.querySelector("#salah-time .today.Asr span"),
-    Maghrib: main_section.salah_times.querySelector("#salah-time .today.Maghrib span"),
-    Isha: main_section.salah_times.querySelector("#salah-time .today.Isha span"),
-    Midnight: main_section.salah_times.querySelector("#salah-time .today.Midnight span"),
+    Fajr: main_section.salah_times.querySelector("#salah-time .today.Fajr .time"),
+    Sunrise: main_section.salah_times.querySelector("#salah-time .today.Sunrise .time"),
+    Dhuhr: main_section.salah_times.querySelector("#salah-time .today.Dhuhr .time"),
+    Asr: main_section.salah_times.querySelector("#salah-time .today.Asr .time"),
+    Maghrib: main_section.salah_times.querySelector("#salah-time .today.Maghrib .time"),
+    Isha: main_section.salah_times.querySelector("#salah-time .today.Isha .time"),
+    Midnight: main_section.salah_times.querySelector("#salah-time .today.Midnight .time"),
 
-    Fajr2: main_section.salah_times.querySelector("#salah-time .other.Fajr span"),
-    Sunrise2: main_section.salah_times.querySelector("#salah-time .other.Sunrise span"),
-    Dhuhr2: main_section.salah_times.querySelector("#salah-time .other.Dhuhr span"),
-    Asr2: main_section.salah_times.querySelector("#salah-time .other.Asr span"),
-    Maghrib2: main_section.salah_times.querySelector("#salah-time .other.Maghrib span"),
-    Isha2: main_section.salah_times.querySelector("#salah-time .other.Isha span"),
-    Midnight2: main_section.salah_times.querySelector("#salah-time .other.Midnight span"),
+    Fajr2: main_section.salah_times.querySelector("#salah-time .other.Fajr .time"),
+    Sunrise2: main_section.salah_times.querySelector("#salah-time .other.Sunrise .time"),
+    Dhuhr2: main_section.salah_times.querySelector("#salah-time .other.Dhuhr .time"),
+    Asr2: main_section.salah_times.querySelector("#salah-time .other.Asr .time"),
+    Maghrib2: main_section.salah_times.querySelector("#salah-time .other.Maghrib .time"),
+    Isha2: main_section.salah_times.querySelector("#salah-time .other.Isha .time"),
+    Midnight2: main_section.salah_times.querySelector("#salah-time .other.Midnight .time"),
   },
   clock_element = {
     time_h: main_section.clock.querySelector("#clock .time_h"),
@@ -59,3 +60,5 @@ const loadInterval = setInterval(() => {
     }, 1000);
   }
 }, 1);
+
+main_section.settings.addEventListener("submit", settings__submit);
