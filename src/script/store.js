@@ -5,8 +5,7 @@ const fix = (e) => (e < 10 ? "0" + e : String(e)),
     ;(sec = e.getSeconds()), (clock_element.time_s.textContent = fix(sec))
   },
   updateMin = (e) => {
-    ;(min = e.getMinutes()), (clock_element.time_m.textContent = fix(min))
-    check_current_prayer()
+    ;(min = e.getMinutes()), (clock_element.time_m.textContent = fix(min)), check_current_prayer()
   },
   updateHou = (e) => {
     ;(hou = e.getHours()),
