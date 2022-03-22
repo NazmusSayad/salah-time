@@ -55,13 +55,18 @@
         .line {
           background: blue;
         }
-        &.Fajr .remain {
-          visibility: visible;
-        }
       }
       &.next {
         .line {
           background: lightcoral;
+        }
+        .remain {
+          visibility: visible;
+        }
+      }
+      &.remain {
+        .line {
+          background: rgb(241, 183, 183);
         }
         .remain {
           visibility: visible;

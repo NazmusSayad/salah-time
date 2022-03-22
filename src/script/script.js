@@ -27,38 +27,41 @@ const main_section = {
     time_s: main_section.clock.querySelector("#clock .time_s"),
     time_t: main_section.clock.querySelector("#clock .time_t"),
     date_all: main_section.clock.querySelector("#clock .date"),
-  };
+  }
 
-(() => {
+;(() => {
   if (config.latitude && config.longitude) {
-    get_data_from_server();
+    get_data_from_server()
   } else {
     navigator.geolocation.watchPosition(
       (position) => {
-        update_latt_long_config(position.coords.latitude, position.coords.longitude);
+        update_latt_long_config(position.coords.latitude, position.coords.longitude)
       },
       () => {
-        update_latt_long_ip();
+        update_latt_long_ip()
       }
-    );
+    )
   }
-})();
+})()
 
 // Clock Block
-setfirstDate();
+setfirstDate()
 
 const loadInterval = setInterval(() => {
   if (!Math.round(new Date().getMilliseconds() / 100)) {
-    clearInterval(loadInterval);
-    startClock();
+    clearInterval(loadInterval)
+    startClock()
     setInterval(() => {
-      startClock();
+      startClock()
       if (config.current === "Fajr") {
-        check_Fajr_prayer();
+        check_Fajr_prayer()
+        salah_times__element["Sunrise"].parentNode.classList.add("remain")
+      } else {
+        salah_times__element["Sunrise"].parentNode.classList.remove("remain")
       }
-      check_Next_prayer();
-    }, 1000);
+      check_Next_prayer()
+    }, 1000)
   }
-}, 1);
+}, 1)
 
-main_section.settings.addEventListener("submit", settings__submit);
+main_section.settings.addEventListener("submit", settings__submit)

@@ -10,6 +10,6 @@ const config = {
   },
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   loaded: false,
-};
-let currentDate, sec, min, hou, ampm, today, tomorrow, yesterday;
-update_all_dates();
+}
+let currentDate, sec, min, hou, ampm, today, tomorrow, yesterday
+update_all_dates()
