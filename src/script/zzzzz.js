@@ -238,7 +238,7 @@ const update_all_dates = (input) => {
     const startTime = new Date("2013/10/08 " + config.data[inp].Maghrib).getTime()
     const endTime = new Date("2013/10/09 " + config.data[inp].Duha).getTime()
     const difference = endTime - startTime
-    config.data[inp].Midnight = new Date(3600000 + startTime + difference / 2).toLocaleTimeString().replace(/:00 /gim, " ")
+    config.data[inp].Midnight = new Date(3600000 + startTime + difference / 2).toLocaleTimeString().replace(/:00|:30/gim, " ")
   }
 const settings__open = () => {
     const juristic__list = main_section.settings.querySelectorAll(".settings__juristic--list input")
