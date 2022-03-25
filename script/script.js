@@ -120,16 +120,12 @@ const get_data_from_server = () => {
     )
   },
   update_page = () => {
-    calculateMidNIght("today")
-    calculateMidNIght("other")
-
     salah_times__element.Fajr.innerHTML = config.data.today.Fajr
     salah_times__element.Sunrise.innerHTML = config.data.today.Duha
     salah_times__element.Dhuhr.innerHTML = config.data.today.Dhuhr
     salah_times__element.Asr.innerHTML = config.data.today.Asr
     salah_times__element.Maghrib.innerHTML = config.data.today.Maghrib
     salah_times__element.Isha.innerHTML = config.data.today.Isha
-    salah_times__element.Midnight.innerHTML = config.data.today.Midnight
 
     salah_times__element.Fajr2.innerHTML = config.data.other.Fajr
     salah_times__element.Sunrise2.innerHTML = config.data.other.Duha
@@ -137,7 +133,6 @@ const get_data_from_server = () => {
     salah_times__element.Asr2.innerHTML = config.data.other.Asr
     salah_times__element.Maghrib2.innerHTML = config.data.other.Maghrib
     salah_times__element.Isha2.innerHTML = config.data.other.Isha
-    salah_times__element.Midnight2.innerHTML = config.data.other.Midnight
 
     check_current_prayer()
     check_Fajr_prayer()
@@ -234,12 +229,6 @@ const update_all_dates = (input) => {
     const seconds = parseInt((Math.abs(endDate.getTime() - currentDatesdf.getTime()) / 1000) % 60)
 
     return hours + ":" + fix(minutes) + ":" + fix(seconds)
-  },
-  calculateMidNIght = (inp) => {
-    const startTime = new Date("2013/10/08 " + config.data[inp].Maghrib).getTime()
-    const endTime = new Date("2013/10/09 " + config.data[inp].Duha).getTime()
-    const difference = endTime - startTime
-    config.data[inp].Midnight = new Date(3600000 + startTime + difference / 2).toLocaleTimeString().replace(/:00|:30/gim, " ")
   }
 const settings__open = () => {
     const juristic__list = main_section.settings.querySelectorAll(".settings__juristic--list input")
