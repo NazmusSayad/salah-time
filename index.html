@@ -20,90 +20,120 @@
     <script defer src="/script/app.js"></script>
   </head>
   <body>
+    <header id="header" class="header">
+      <div class="header" -wrap>
+        <div class="header__section"><h1>Prayer Time</h1></div>
+
+        <div class="header__section" id="clock">
+          <article class="time">
+            <span class="time_h"></span><span class="colon">:</span><span class="time_m"></span><span class="colon">:</span><span class="time_s"></span>
+            <span class="time_t"></span>
+          </article>
+          <article class="date"></article>
+        </div>
+      </div>
+    </header>
+
     <!-- Salah-Time -->
     <section id="salah-time">
-      <div -wrap>
-        <div class="time_item today prayer Fajr">
-          <div class="time">--:-- --</div>
-          <div class="line"></div>
-          <div class="remain">--:--</div>
+      <div class="salah-time" -wrap>
+        <div class="salah-time__item today Fajr prayer">
+          <div class="salah-time__item--time">--:-- --</div>
+          <div class="salah-time__item--line">
+            <span></span>
+          </div>
+          <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="time_item today Sunrise">
-          <div class="time">--:-- --</div>
-          <div class="line"></div>
-          <div class="remain">--:--</div>
+        <div class="salah-time__item today Sunrise">
+          <div class="salah-time__item--time">--:-- --</div>
+          <div class="salah-time__item--line">
+            <span></span>
+          </div>
+          <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="time_item today prayer Dhuhr">
-          <div class="time">--:-- --</div>
-          <div class="line"></div>
-          <div class="remain">--:--</div>
+        <div class="salah-time__item today Dhuhr prayer">
+          <div class="salah-time__item--time">--:-- --</div>
+          <div class="salah-time__item--line">
+            <span></span>
+          </div>
+          <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="time_item today prayer Asr">
-          <div class="time">--:-- --</div>
-          <div class="line"></div>
-          <div class="remain">--:--</div>
+        <div class="salah-time__item today Asr prayer">
+          <div class="salah-time__item--time">--:-- --</div>
+          <div class="salah-time__item--line">
+            <span></span>
+          </div>
+          <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="time_item today prayer Maghrib">
-          <div class="time">--:-- --</div>
-          <div class="line"></div>
-          <div class="remain">--:--</div>
+        <div class="salah-time__item today Maghrib prayer">
+          <div class="salah-time__item--time">--:-- --</div>
+          <div class="salah-time__item--line">
+            <span></span>
+          </div>
+          <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="time_item today prayer Isha">
-          <div class="time">--:-- --</div>
-          <div class="line"></div>
-          <div class="remain">--:--</div>
+        <div class="salah-time__item today Isha prayer">
+          <div class="salah-time__item--time">--:-- --</div>
+          <div class="salah-time__item--line">
+            <span></span>
+          </div>
+          <div class="salah-time__item--remain">--:--</div>
         </div>
 
-        <div class="time_item other prayer Fajr">
-          <div class="time">--:-- --</div>
-          <div class="line"></div>
-          <div class="remain">--:--</div>
+        <div class="salah-time__item other Fajr prayer">
+          <div class="salah-time__item--time">--:-- --</div>
+          <div class="salah-time__item--line">
+            <span></span>
+          </div>
+          <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="time_item other Sunrise">
-          <div class="time">--:-- --</div>
-          <div class="line"></div>
-          <div class="remain">--:--</div>
+        <div class="salah-time__item other Sunrise">
+          <div class="salah-time__item--time">--:-- --</div>
+          <div class="salah-time__item--line">
+            <span></span>
+          </div>
+          <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="time_item other prayer Dhuhr">
-          <div class="time">--:-- --</div>
-          <div class="line"></div>
-          <div class="remain">--:--</div>
+        <div class="salah-time__item other Dhuhr prayer">
+          <div class="salah-time__item--time">--:-- --</div>
+          <div class="salah-time__item--line">
+            <span></span>
+          </div>
+          <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="time_item other prayer Asr">
-          <div class="time">--:-- --</div>
-          <div class="line"></div>
-          <div class="remain">--:--</div>
+        <div class="salah-time__item other Asr prayer">
+          <div class="salah-time__item--time">--:-- --</div>
+          <div class="salah-time__item--line">
+            <span></span>
+          </div>
+          <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="time_item other prayer Maghrib">
-          <div class="time">--:-- --</div>
-          <div class="line"></div>
-          <div class="remain">--:--</div>
+        <div class="salah-time__item other Maghrib prayer">
+          <div class="salah-time__item--time">--:-- --</div>
+          <div class="salah-time__item--line">
+            <span></span>
+          </div>
+          <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="time_item other prayer Isha">
-          <div class="time">--:-- --</div>
-          <div class="line"></div>
-          <div class="remain">--:--</div>
+        <div class="salah-time__item other Isha prayer">
+          <div class="salah-time__item--time">--:-- --</div>
+          <div class="salah-time__item--line">
+            <span></span>
+          </div>
+          <div class="salah-time__item--remain">--:--</div>
         </div>
       </div>
     </section>
 
-    <br />
-    <hr />
     <!-- Clock -->
-    <section id="clock">
-      <div -wrap>
-        <article class="time">
-          <span class="time_h"></span><span class="colon">:</span><span class="time_m"></span><span class="colon">:</span><span class="time_s"></span>
-          <span class="time_t"></span>
-        </article>
-        <article class="date"></article>
-      </div>
-    </section>
 
-    <hr />
     <!-- Current Player -->
 
-    <button onclick="settings__open()">settings__open</button>
+    <section onclick="settings__open()" id="settings-button">
+      <div></div>
+      <div></div>
+      <div></div>
+    </section>
 
     <form id="settings">
       <div -wrap>

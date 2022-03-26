@@ -1,120 +1,235 @@
 #salah-time {
-  background-color: #05632d;
-  background-image: url(https://www.prayertime.online/wp-content/themes/prayertime/images/hero.svg);
-  color: #fff;
-  [-wrap] {
+  .salah-time {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-row-gap: 10rem;
-    .time_item {
-      text-align: center;
-      .time {
+    padding: 3.5rem 5rem;
+    &__item {
+      &--time {
+        text-transform: lowercase;
         font-size: 1.9rem;
-        font-weight: 700;
+        font-weight: bold;
         &::after {
-          content: "";
+          margin-top: 0.5rem;
+          text-transform: capitalize;
           display: block;
-          margin-top: 1rem;
+          font-weight: initial;
           font-size: 1.7rem;
-          font-weight: normal;
         }
-        margin-bottom: 3rem;
       }
 
-      .line {
-        margin-top: 0.75rem;
-        display: block;
-        height: 0.3rem;
-        background: #fff;
+      &--line {
+        margin: 2.25rem 0;
         position: relative;
-        &::after {
-          content: "";
+        span {
+          $size: 1.3rem;
+          @include center-position-absoulute;
           display: block;
-          height: 0.8rem;
-          width: 0.8rem;
+          height: $size;
+          aspect-ratio: 1;
           border-radius: 50%;
-          border: 0.3rem solid #fff;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background: #f9c700;
-        }
-      }
-      &.other {
-        .line {
-          background: #888;
+          border: 0.3rem solid $line-color-1;
+          background: #000;
         }
       }
 
-      .remain {
-        margin-top: 2rem;
-        visibility: hidden;
+      &--remain {
+        opacity: 0;
       }
 
-      &.active {
-        .line {
-          background: blue;
+      &.current {
+        .salah-time__item--line {
+          &::after {
+            content: "";
+            display: block;
+            @include center-position-absoulute;
+            height: 1.75rem;
+            border-radius: 50%;
+            aspect-ratio: 1;
+            background: $line-color-current;
+          }
+          span {
+            &::before,
+            &::after {
+              @include center-position-absoulute;
+              height: 225%;
+              display: block;
+              content: "";
+              aspect-ratio: 1;
+              border-radius: 50%;
+              box-shadow: 0 0 0 0.1rem $line-color-current;
+              animation-name: animate-currentFajr;
+              animation-duration: 2s;
+              animation-iteration-count: infinite;
+            }
+
+            &::before {
+            }
+            &::after {
+              animation-delay: 0.5s;
+            }
+          }
         }
       }
+
       &.next {
-        .line {
-          background: lightcoral;
-        }
-        .remain {
-          visibility: visible;
+        .salah-time__item--line {
+          &::after {
+            content: "";
+            display: block;
+            @include center-position-absoulute;
+            height: 1.7rem;
+            border-radius: 50%;
+            aspect-ratio: 1;
+            background: $line-color-next;
+            animation-name: animate-next;
+            animation-iteration-count: infinite;
+            animation-duration: 1s;
+          }
         }
       }
-      &.remain {
-        .line {
-          background: rgb(241, 183, 183);
-        }
-        .remain {
-          visibility: visible;
+
+      &.currentFajr {
+        .salah-time__item--line {
+          &::after {
+            content: "";
+            display: block;
+            @include center-position-absoulute;
+            height: 1.4rem;
+            border-radius: 50%;
+            aspect-ratio: 1;
+            background: $line-color-currentFajr;
+
+            animation-name: animate-next;
+            animation-iteration-count: infinite;
+            animation-duration: 0.33s;
+          }
         }
       }
-      // Labels
+
+      // Utility
+      &.next,
+      &.currentFajr {
+        .salah-time__item--remain {
+          opacity: 1;
+        }
+      }
+
+      &.today {
+        .salah-time__item--line {
+          span {
+            border-color: $line-color-1;
+          }
+          &::before {
+            content: "";
+            display: block;
+            height: 0.3rem;
+            background: $line-color-1;
+          }
+        }
+      }
+
+      &.other {
+        span {
+          border-color: $line-color-2;
+        }
+        .salah-time__item--line {
+          &::before {
+            content: "";
+            display: block;
+            height: 0.3rem;
+            background: $line-color-2;
+          }
+        }
+      }
+    }
+    &__item {
       &.Fajr {
-        .time::after {
+        .salah-time__item--time::after {
           content: "Fajr";
+        }
+        .salah-time__item--line {
+          padding-left: 50%;
         }
       }
       &.Sunrise {
-        .time::after {
+        .salah-time__item--time::after {
           content: "Sunrise";
+        }
+        .salah-time__item--line {
+          // padding-left: 50%;
         }
       }
       &.Dhuhr {
-        .time::after {
+        .salah-time__item--time::after {
           content: "Dhuhr";
+        }
+        .salah-time__item--line {
+          // padding-left: 50%;
         }
       }
       &.Asr {
-        .time::after {
+        .salah-time__item--time::after {
           content: "Asr";
+        }
+        .salah-time__item--line {
+          // padding-left: 50%;
         }
       }
       &.Maghrib {
-        .time::after {
+        .salah-time__item--time::after {
           content: "Maghrib";
+        }
+        .salah-time__item--line {
+          // padding-left: 50%;
         }
       }
       &.Isha {
-        .time::after {
+        .salah-time__item--time::after {
           content: "Isha";
         }
-      }
-      &.Midnight {
-        .time::after {
-          content: "Midnight";
+        .salah-time__item--line {
+          padding-right: 50%;
         }
       }
     }
   }
-  &.yesterday {
-    [-wrap] {
-      .time_item.other {
+  &.yerterday {
+    .salah-time__item {
+      &.today {
+        .salah-time__item--line {
+          span {
+            border-color: $line-color-2;
+          }
+          &::before {
+            background: $line-color-2;
+          }
+        }
+      }
+      &.other {
         order: -1;
+        span {
+          border-color: $line-color-1;
+        }
+        .salah-time__item--line {
+          &::before {
+            background: $line-color-1;
+          }
+        }
+      }
+    }
+  }
+}
+#header {
+  .header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 2rem 7rem;
+    & > * {
+      text-align: right;
+      &:nth-child(1) {
+        flex: 1;
+        text-align: left;
       }
     }
   }
@@ -231,6 +346,7 @@
     }
   }
 }
+
 .button {
   background-color: $color-blue;
   color: $color-white;
@@ -242,5 +358,19 @@
   border-radius: 0.5rem;
   &.orange {
     background-color: $color-orange;
+  }
+}
+#settings-button {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  cursor: pointer;
+  div {
+    width: 2rem;
+    height: 0.2rem;
+    background: #fff;
+    &:nth-child(2) {
+      margin: 0.5rem 0;
+    }
   }
 }

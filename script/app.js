@@ -24,9 +24,9 @@ const loadInterval = setInterval(() => {
       startClock()
       if (config.current === "Fajr") {
         check_Fajr_prayer()
-        salah_times__element["Sunrise"].parentNode.classList.add("remain")
+        salah_times__element["Sunrise"].parentNode.classList.add("currentFajr")
       } else {
-        salah_times__element["Sunrise"].parentNode.classList.remove("remain")
+        salah_times__element["Sunrise"].parentNode.classList.remove("currentFajr")
       }
       check_Next_prayer()
     }, 1000)

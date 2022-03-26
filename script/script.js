@@ -185,7 +185,7 @@ const find_prayer_time = (input) => {
     }
     for (let key in salah_times__element) {
       if (key !== config.current) {
-        salah_times__element[key].parentNode.classList.remove("active")
+        salah_times__element[key].parentNode.classList.remove("current")
       }
       if (key !== config.next) {
         salah_times__element[key].parentNode.classList.remove("next")
@@ -193,13 +193,13 @@ const find_prayer_time = (input) => {
     }
 
     if (config.current) {
-      salah_times__element[config.current].parentNode.classList.add("active")
+      salah_times__element[config.current].parentNode.classList.add("current")
     }
     salah_times__element[config.next].parentNode.classList.add("next")
   },
   check_Fajr_prayer = () => {
     const time = check_difference_between_two_time(new Date(today + " " + find_prayer_time("Duha")))
-    salah_times__element["Sunrise"].parentNode.querySelector(".remain").innerHTML = time
+    salah_times__element["Sunrise"].parentNode.querySelector(".salah-time__item--remain").innerHTML = time
   },
   check_Next_prayer = () => {
     const time = check_difference_between_two_time(
@@ -207,7 +207,7 @@ const find_prayer_time = (input) => {
         (config.next === "Fajr2" && new Date() > new Date(today + " " + config.data.today.Isha) ? tomorrow : today) + " " + find_prayer_time(config.next)
       )
     )
-    salah_times__element[config.next].parentNode.querySelector(".remain").innerHTML = time
+    salah_times__element[config.next].parentNode.querySelector(".salah-time__item--remain").innerHTML = time
   }
 
 const update_all_dates = (input) => {
