@@ -13,6 +13,8 @@ html {
 body {
   font-family: sans-serif;
   font-size: 1.6rem;
+  color: $color-white;
+  background: $color-dark;
 }
 
 textarea,
@@ -21,7 +23,7 @@ input {
   color: inherit;
 }
 
-[-wrap---] {
+[-wrap] {
   width: 100%;
   max-width: 1440px;
   margin-left: auto;

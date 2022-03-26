@@ -1,0 +1,246 @@
+#salah-time {
+  background-color: #05632d;
+  background-image: url(https://www.prayertime.online/wp-content/themes/prayertime/images/hero.svg);
+  color: #fff;
+  [-wrap] {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-row-gap: 10rem;
+    .time_item {
+      text-align: center;
+      .time {
+        font-size: 1.9rem;
+        font-weight: 700;
+        &::after {
+          content: "";
+          display: block;
+          margin-top: 1rem;
+          font-size: 1.7rem;
+          font-weight: normal;
+        }
+        margin-bottom: 3rem;
+      }
+
+      .line {
+        margin-top: 0.75rem;
+        display: block;
+        height: 0.3rem;
+        background: #fff;
+        position: relative;
+        &::after {
+          content: "";
+          display: block;
+          height: 0.8rem;
+          width: 0.8rem;
+          border-radius: 50%;
+          border: 0.3rem solid #fff;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: #f9c700;
+        }
+      }
+      &.other {
+        .line {
+          background: #888;
+        }
+      }
+
+      .remain {
+        margin-top: 2rem;
+        visibility: hidden;
+      }
+
+      &.active {
+        .line {
+          background: blue;
+        }
+      }
+      &.next {
+        .line {
+          background: lightcoral;
+        }
+        .remain {
+          visibility: visible;
+        }
+      }
+      &.remain {
+        .line {
+          background: rgb(241, 183, 183);
+        }
+        .remain {
+          visibility: visible;
+        }
+      }
+      // Labels
+      &.Fajr {
+        .time::after {
+          content: "Fajr";
+        }
+      }
+      &.Sunrise {
+        .time::after {
+          content: "Sunrise";
+        }
+      }
+      &.Dhuhr {
+        .time::after {
+          content: "Dhuhr";
+        }
+      }
+      &.Asr {
+        .time::after {
+          content: "Asr";
+        }
+      }
+      &.Maghrib {
+        .time::after {
+          content: "Maghrib";
+        }
+      }
+      &.Isha {
+        .time::after {
+          content: "Isha";
+        }
+      }
+      &.Midnight {
+        .time::after {
+          content: "Midnight";
+        }
+      }
+    }
+  }
+  &.yesterday {
+    [-wrap] {
+      .time_item.other {
+        order: -1;
+      }
+    }
+  }
+}
+#settings {
+  position: fixed;
+  padding: 3rem 10%;
+  background: #00000000;
+  width: 100vw;
+  inset: 0;
+  opacity: 0;
+  transition: all 0.2s;
+  transform: scale(0) translate(100%, -100%);
+  &.open {
+    opacity: 1;
+    background: #000000;
+    transform: scale(1) translate(0);
+  }
+  [-wrap] {
+    border-radius: 1rem;
+    background: $color-dark;
+    overflow: auto;
+    height: 100%;
+    padding: 2rem 3rem;
+  }
+  .expand-toggle {
+    background-color: $color-dark-2;
+    cursor: pointer;
+    display: flex;
+    padding-left: 1.75rem;
+    align-items: center;
+    height: 4rem;
+    transition: height 0.2s;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1.8rem;
+    img {
+      height: 2rem;
+      transform: rotate(-90deg);
+      transition: transform 0.2s;
+      margin-right: 1rem;
+    }
+
+    &.active {
+      height: 4.5rem;
+      font-weight: bold;
+      img {
+        height: 2.4rem;
+        transform: rotate(0);
+        margin-bottom: 0.3rem;
+      }
+      & + .settings__juristic--list {
+        display: flex;
+      }
+      & + .settings__method--list {
+        display: block;
+      }
+    }
+  }
+  .expand-toggle__content {
+    display: none;
+    margin: 2rem 4rem 3rem;
+  }
+  .settings__juristic--list {
+    display: none;
+    & > * {
+      flex: 1;
+    }
+  }
+  .settings__method--list {
+    margin-bottom: 3rem;
+    .method__list--item {
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+      input {
+        margin-right: 0.8rem;
+      }
+      .label {
+        flex: 1;
+      }
+    }
+  }
+  .settings-location {
+    display: flex;
+    align-items: center;
+    margin: 2.5rem 0;
+    & > * {
+      flex: 1;
+      text-align: center;
+    }
+    .settings__location--lat-long {
+      input {
+        text-align: center;
+        background-color: $color-dark-2;
+        outline: 0;
+        border: 0;
+        font-size: 1.8rem;
+        padding: 0.4rem;
+        border-radius: 1rem;
+        &:first-child {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+  .settings__controls {
+    border-top: 1px solid #000;
+    text-align: center;
+    padding-top: 2rem;
+    button {
+      text-transform: capitalize;
+      margin: 0.2rem;
+    }
+  }
+}
+.button {
+  background-color: $color-blue;
+  color: $color-white;
+  outline: 0;
+  border: 0;
+  font-size: 1.7rem;
+  cursor: pointer;
+  padding: 0.7rem 1.7rem;
+  border-radius: 0.5rem;
+  &.orange {
+    background-color: $color-orange;
+  }
+}

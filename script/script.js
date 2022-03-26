@@ -142,6 +142,7 @@ const get_data_from_server = () => {
     check_current_prayer()
     check_Fajr_prayer()
     check_Next_prayer()
+    main_section.settings.classList.remove("open")
   }
 
 const find_prayer_time = (input) => {
