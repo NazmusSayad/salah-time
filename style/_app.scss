@@ -1,8 +1,10 @@
 #salah-time {
+  min-height: 100vh;
   .salah-time {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     padding: 3.5rem 5rem;
+    grid-row-gap: 7rem;
     &__item {
       &--time {
         text-transform: lowercase;
@@ -18,7 +20,7 @@
       }
 
       &--line {
-        margin: 2.25rem 0;
+        margin: 2.33rem 0;
         position: relative;
         span {
           $size: 1.3rem;
@@ -220,6 +222,8 @@
   }
 }
 #header {
+  background: #00000020;
+  margin-bottom: 3rem;
   .header {
     display: flex;
     width: 100%;
