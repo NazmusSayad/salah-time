@@ -339,21 +339,35 @@
   }
   .settings__juristic--list {
     display: none;
+    text-align: left;
+    input {
+      margin-right: 0.8rem;
+      height: 2rem;
+      width: 2rem;
+      cursor: pointer;
+    }
     & > * {
       flex: 1;
+      display: flex;
+      align-items: center;
     }
   }
   .settings__method--list {
     margin-bottom: 3rem;
     .method__list--item {
       display: flex;
-      align-items: baseline;
-      margin-bottom: 1.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
       input {
         margin-right: 0.8rem;
+        height: 2rem;
+        width: 2rem;
+        cursor: pointer;
       }
       .label {
         flex: 1;
+        text-align: left;
+        margin-left: 0.5rem;
       }
     }
   }

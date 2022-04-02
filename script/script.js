@@ -116,7 +116,6 @@ update_page = () => {
   check_current_prayer();
   check_Fajr_prayer();
   check_Next_prayer();
-  main_section.settings.classList.remove("open");
 };
 
 const find_prayer_time = (input) => {
@@ -248,4 +247,8 @@ const settings__open = () => {
       cookie.set("longitude", long);
     }
     get_data_from_server();
+
+    setTimeout(() => {
+      main_section.settings.classList.remove("open");
+    }, 10);
   };
