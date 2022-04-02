@@ -14,6 +14,7 @@
 
     <link href="/style/style.css" rel="stylesheet" />
 
+    <script src="/script/PrayTimes.js"></script>
     <script src="/script/script.js"></script>
     <script src="/script/main.js"></script>
     <script defer src="/script/element.js"></script>
@@ -35,44 +36,44 @@
           </div>
         </div>
       </header>
-      
+
       <div class="salah-time" -wrap>
-        <div class="salah-time__item today Fajr prayer">
+        <div class="salah-time__item today fajr prayer">
           <div class="salah-time__item--time">--:-- --</div>
           <div class="salah-time__item--line">
             <span></span>
           </div>
           <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="salah-time__item today Sunrise">
+        <div class="salah-time__item today sunrise">
           <div class="salah-time__item--time">--:-- --</div>
           <div class="salah-time__item--line">
             <span></span>
           </div>
           <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="salah-time__item today Dhuhr prayer">
+        <div class="salah-time__item today dhuhr prayer">
           <div class="salah-time__item--time">--:-- --</div>
           <div class="salah-time__item--line">
             <span></span>
           </div>
           <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="salah-time__item today Asr prayer">
+        <div class="salah-time__item today asr prayer">
           <div class="salah-time__item--time">--:-- --</div>
           <div class="salah-time__item--line">
             <span></span>
           </div>
           <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="salah-time__item today Maghrib prayer">
+        <div class="salah-time__item today maghrib prayer">
           <div class="salah-time__item--time">--:-- --</div>
           <div class="salah-time__item--line">
             <span></span>
           </div>
           <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="salah-time__item today Isha prayer">
+        <div class="salah-time__item today isha prayer">
           <div class="salah-time__item--time">--:-- --</div>
           <div class="salah-time__item--line">
             <span></span>
@@ -80,42 +81,42 @@
           <div class="salah-time__item--remain">--:--</div>
         </div>
 
-        <div class="salah-time__item other Fajr prayer">
+        <div class="salah-time__item other fajr prayer">
           <div class="salah-time__item--time">--:-- --</div>
           <div class="salah-time__item--line">
             <span></span>
           </div>
           <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="salah-time__item other Sunrise">
+        <div class="salah-time__item other sunrise">
           <div class="salah-time__item--time">--:-- --</div>
           <div class="salah-time__item--line">
             <span></span>
           </div>
           <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="salah-time__item other Dhuhr prayer">
+        <div class="salah-time__item other dhuhr prayer">
           <div class="salah-time__item--time">--:-- --</div>
           <div class="salah-time__item--line">
             <span></span>
           </div>
           <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="salah-time__item other Asr prayer">
+        <div class="salah-time__item other asr prayer">
           <div class="salah-time__item--time">--:-- --</div>
           <div class="salah-time__item--line">
             <span></span>
           </div>
           <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="salah-time__item other Maghrib prayer">
+        <div class="salah-time__item other maghrib prayer">
           <div class="salah-time__item--time">--:-- --</div>
           <div class="salah-time__item--line">
             <span></span>
           </div>
           <div class="salah-time__item--remain">--:--</div>
         </div>
-        <div class="salah-time__item other Isha prayer">
+        <div class="salah-time__item other isha prayer">
           <div class="salah-time__item--time">--:-- --</div>
           <div class="salah-time__item--line">
             <span></span>
@@ -143,11 +144,11 @@
         </div>
         <div class="expand-toggle__content settings__juristic--list">
           <div class="juristic__list--item">
-            <input type="radio" name="iuksajdhfiosadf" value="0" checked />
+            <input type="radio" name="iuksajdhfiosadf" value="Standard" checked />
             Standard (Shafi, Hanbli, Maliki)
           </div>
           <div class="juristic__list--item">
-            <input type="radio" name="iuksajdhfiosadf" value="1" />
+            <input type="radio" name="iuksajdhfiosadf" value="Hanafi" />
             Hanafi
           </div>
         </div>
@@ -156,103 +157,7 @@
           <img src="/media/chevron-down-solid.svg" alt="" />
           <span>Organisation</span>
         </div>
-        <div class="expand-toggle__content settings__method--list">
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="0" />
-            <div class="label">Jafari - Ithna Ashari.</div>
-            <div class="tip">Fajir: 16° Isha: 14°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="1" checked />
-            <div class="label">Karachi - University of Islamic Sciences.</div>
-            <div class="tip">Fajir: 18° Isha: 18°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="2" />
-            <div class="label">ISNA - Islamic Society of North America.</div>
-            <div class="tip">Fajir: 15° Isha: 15°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="3" />
-            <div class="label">MWL - Muslim World League.</div>
-            <div class="tip">Fajir: 18° Isha: 17°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="4" />
-            <div class="label">Mecca - Umm al-Qura.</div>
-            <div class="tip">Fajir: 18.5° Isha: Fixed 90 Minutes</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="5" />
-            <div class="label">Egyptian General Authority of Survey.</div>
-            <div class="tip">Fajir: 19.5° Isha: 17.5°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="6" />
-            <div class="label">Custom Setting.</div>
-            <div class="tip">Fajir: 18° Isha: 17°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="7" />
-            <div class="label">University of Tehran - Institute of Geophysics.</div>
-            <div class="tip">Fajir: 17.7° Isha: 14°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="8" />
-            <div class="label">Algerian Minister of Religious Affairs and Wakfs.</div>
-            <div class="tip">Fajir: 18° Isha: 17°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="9" />
-            <div class="label">Gulf 90 Minutes Fixed Isha.</div>
-            <div class="tip">Fajir: 19.5° Isha: Fixed 90 Minutes</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="10" />
-            <div class="label">Egyptian General Authority of Survey (Bis).</div>
-            <div class="tip">Fajir: 20° Isha: 18°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="11" />
-            <div class="label">UOIF - Union Des Organisations Islamiques De France.</div>
-            <div class="tip">Fajir: 12° Isha: 12°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="12" />
-            <div class="label">Sistem Informasi Hisab Rukyat Indonesia.</div>
-            <div class="tip">Fajir: 20° Isha: 18°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="13" />
-            <div class="label">Diyanet İşleri Başkanlığı.</div>
-            <div class="tip">Fajir: 18° Isha: 17°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="14" />
-            <div class="label">Germany Custom.</div>
-            <div class="tip">Fajir: 18° Isha: 16.5°</div>
-          </div>
-
-          <div class="method__list--item">
-            <input type="radio" name="aiowehriowehr" value="15" />
-            <div class="label">Russia Custom.</div>
-            <div class="tip">Fajir: 16° Isha: 15°</div>
-          </div>
-        </div>
+        <div class="expand-toggle__content settings__method--list"></div>
 
         <section class="settings-location">
           <div class="settings__location--ip location-button">
@@ -267,7 +172,7 @@
           </div>
 
           <div class="settings__location--location location-button">
-            <button class="button" onclick="if (confirm('This will update your location immediately. Ok???')) update_latt_long_location(true);">
+            <button class="button" onclick="if (confirm('This will update your location immediately. Ok???')) update_latt_long_location();">
               Update Area Using Location
             </button>
           </div>

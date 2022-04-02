@@ -1,6 +1,6 @@
 const config = {
-  method: cookie.get("method") ? cookie.get("method") : 1,
-  juristic: cookie.get("juristic") ? cookie.get("juristic") : 1,
+  method: cookie.get("method") ? cookie.get("method") : "Karachi",
+  juristic: cookie.get("juristic") ? cookie.get("juristic") : "Hanafi",
   latitude: cookie.get("latitude") ? cookie.get("latitude") : null,
   longitude: cookie.get("longitude") ? cookie.get("longitude") : null,
   data: {
@@ -8,8 +8,9 @@ const config = {
     other: {},
     settings: null,
   },
-  timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  timezone: new Date().getTimezoneOffset() / -60,
   loaded: false,
-}
-let currentDate, sec, min, hou, ampm, today, tomorrow, yesterday
-update_all_dates()
+  userIpData: null,
+};
+let currentDate, sec, min, hou, ampm, today, tomorrow, yesterday;
+update_all_dates();

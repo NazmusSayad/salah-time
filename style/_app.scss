@@ -145,52 +145,59 @@
       }
     }
     &__item {
-      &.Fajr {
+      &.fajr {
         .salah-time__item--time::after {
           content: "Fajr";
         }
         .salah-time__item--line {
-          padding-left: 50%;
+          // padding-right: 50%;
+          // padding-left: 50%;
         }
       }
-      &.Sunrise {
+      &.sunrise {
         .salah-time__item--time::after {
           content: "Sunrise";
         }
         .salah-time__item--line {
+          // padding-right: 50%;
           // padding-left: 50%;
         }
       }
-      &.Dhuhr {
+      &.dhuhr {
         .salah-time__item--time::after {
           content: "Dhuhr";
         }
         .salah-time__item--line {
+          // padding-right: 50%;
           // padding-left: 50%;
         }
       }
-      &.Asr {
+      &.asr {
         .salah-time__item--time::after {
           content: "Asr";
         }
         .salah-time__item--line {
+          // padding-right: 50%;
           // padding-left: 50%;
         }
       }
-      &.Maghrib {
+      &.maghrib {
         .salah-time__item--time::after {
           content: "Maghrib";
         }
         .salah-time__item--line {
+          // padding-right: 50%;
           // padding-left: 50%;
         }
       }
-      &.Isha {
+      &.isha {
         .salah-time__item--time::after {
           content: "Isha";
         }
         .salah-time__item--line {
-          padding-right: 50%;
+          // padding-right: 50%;
+          // padding-right: 50%;
+          // padding-left: 50%;
         }
       }
     }
