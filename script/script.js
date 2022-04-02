@@ -89,7 +89,7 @@ const get_data_from_server = () => {
 
   if (new Date(today + " " + config.data.today.fajr) >= new Date()) {
     config.data.other = prayTimes.getTimes(new Date(Date.now() - 86400000), [config.latitude, config.longitude], config.timezone, 0, "12h");
-    main_section.salah_times.className = "yerterday";
+    main_section.salah_times.className = "yesterday";
     update_page();
   } else {
     config.data.other = prayTimes.getTimes(new Date(Date.now() + 86400000), [config.latitude, config.longitude], config.timezone, 0, "12h");

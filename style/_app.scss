@@ -9,7 +9,6 @@
     @include laptop-s {
       margin: 3.5rem 6.5vw;
       .salah-time__item {
-        width: 17%;
       }
     }
     @include tablet-l {
@@ -27,7 +26,7 @@
     @include phone {
       margin: 3.5rem 5vw;
       .salah-time__item {
-        width: 30%;
+        width: 33%;
       }
     }
 
@@ -230,19 +229,19 @@
         }
         .salah-time__item--line {
           // padding-right: 50%;
-          // padding-right: 50%;
           // padding-left: 50%;
         }
       }
     }
   }
-  &.yerterday {
+  &.yesterday {
     .salah-time__item {
       &.today {
         .salah-time__item--line {
           span {
             border-color: $line-color-2;
           }
+
           &::before {
             background: $line-color-2;
           }

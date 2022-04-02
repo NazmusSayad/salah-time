@@ -21,22 +21,23 @@
     <script defer src="script/app.js"></script>
   </head>
   <body>
+    <header id="header" class="header">
+      <div class="header" -wrap>
+        <div class="header__section"><h1>Prayer Time</h1></div>
+
+        <div class="header__section" id="clock">
+          <article class="time">
+            <span class="time_h"></span><span class="colon">:</span><span class="time_m"></span><span class="colon">:</span><span class="time_s"></span>
+            <span class="time_t"></span>
+          </article>
+          <article class="date"></article>
+        </div>
+      </div>
+    </header>
+
+
     <!-- Salah-Time -->
     <section id="salah-time">
-      <header id="header" class="header">
-        <div class="header" -wrap>
-          <div class="header__section"><h1>Prayer Time</h1></div>
-
-          <div class="header__section" id="clock">
-            <article class="time">
-              <span class="time_h"></span><span class="colon">:</span><span class="time_m"></span><span class="colon">:</span><span class="time_s"></span>
-              <span class="time_t"></span>
-            </article>
-            <article class="date"></article>
-          </div>
-        </div>
-      </header>
-
       <div class="salah-time" -wrap>
         <div class="salah-time__item today fajr prayer">
           <div class="salah-time__item--time">--:-- --</div>
