@@ -34,14 +34,3 @@ const loadInterval = setInterval(() => {
 }, 1);
 
 main_section.settings.addEventListener("submit", settings__submit);
-
-for (let key in methods) {
-  const element = document.createElement("div");
-  element.classList.add("method__list--item");
-  element.innerHTML = `
-<input type="radio" name="aiowehriowehr" value="${key}" />
-<div class="label">${methods[key].name}</div>
-<div class="tip">Fajir: ${methods[key].params.fajr}° Isha: ${methods[key].params.isha}°</div>
-`;
-  settings_element.settings__method_list.appendChild(element);
-}

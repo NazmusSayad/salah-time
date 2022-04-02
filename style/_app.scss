@@ -1,11 +1,39 @@
 #salah-time {
   min-height: 100vh;
   .salah-time {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    padding: 3.5rem 5rem;
-    grid-row-gap: 7rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 3.5rem 7vw;
+    row-gap: 2.5rem;
+    justify-content: center;
+    @include laptop-s {
+      margin: 3.5rem 6.5vw;
+      .salah-time__item {
+        width: 17%;
+      }
+    }
+    @include tablet-l {
+      margin: 3.5rem 6vw;
+      .salah-time__item {
+        width: 20%;
+      }
+    }
+    @include tablet {
+      margin: 3.5rem 5.5vw;
+      .salah-time__item {
+        width: 25%;
+      }
+    }
+    @include phone {
+      margin: 3.5rem 5vw;
+      .salah-time__item {
+        width: 30%;
+      }
+    }
+
     &__item {
+      min-width: max-content;
+      width: 16.5%;
       &--time {
         text-transform: lowercase;
         font-size: 1.9rem;
@@ -36,6 +64,12 @@
 
       &--remain {
         opacity: 0;
+        color: antiquewhite;
+      }
+
+      &.next,
+      &.currentFajr {
+        margin-bottom: 4rem;
       }
 
       &.current {
@@ -348,7 +382,7 @@
     }
   }
   .settings__controls {
-    border-top: 1px solid #000;
+    border-top: 0.1rem solid #000;
     text-align: center;
     padding-top: 2rem;
     button {
