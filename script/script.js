@@ -89,11 +89,11 @@ const get_data_from_server = () => {
 
   if (new Date(today + " " + config.data.today.fajr) >= new Date()) {
     config.data.other = prayTimes.getTimes(new Date(Date.now() - 86400000), [config.latitude, config.longitude], config.timezone, 0, "12h");
-    main_section.salah_times.className = "yesterday";
+    main_section.salah_times.classList.add("yesterday");
     update_page();
   } else {
     config.data.other = prayTimes.getTimes(new Date(Date.now() + 86400000), [config.latitude, config.longitude], config.timezone, 0, "12h");
-    main_section.salah_times.className = "tomorrow";
+    main_section.salah_times.classList.remove("yesterday");
     update_page();
   }
 };
@@ -114,8 +114,8 @@ update_page = () => {
   salah_times__element.isha2.innerHTML = config.data.other.isha;
 
   check_current_prayer();
-  check_Fajr_prayer();
   check_Next_prayer();
+  check_Fajr_prayer();
 };
 
 const find_prayer_time = (input) => {
@@ -151,8 +151,8 @@ const find_prayer_time = (input) => {
       if (new Date() < dates[0]) {
         config.current = "fajr";
         if (!config.loaded) {
-          get_data_from_server();
           config.loaded = true;
+          get_data_from_server();
         }
       }
       config.next = "dhuhr";
@@ -176,8 +176,13 @@ const find_prayer_time = (input) => {
     salah_times__element[config.next].parentNode.classList.add("next");
   },
   check_Fajr_prayer = () => {
-    const time = check_difference_between_two_time(new Date(today + " " + find_prayer_time("sunrise")));
-    salah_times__element["sunrise"].parentNode.querySelector(".salah-time__item--remain").innerHTML = time;
+    if (config.current === "fajr") {
+      const time = check_difference_between_two_time(new Date(today + " " + find_prayer_time("sunrise")));
+      salah_times__element["sunrise"].parentNode.querySelector(".salah-time__item--remain").innerHTML = time;
+      salah_times__element["sunrise"].parentNode.classList.add("currentFajr");
+    } else {
+      salah_times__element["sunrise"].parentNode.classList.remove("currentFajr");
+    }
   },
   check_Next_prayer = () => {
     const time = check_difference_between_two_time(
@@ -189,15 +194,14 @@ const find_prayer_time = (input) => {
   };
 
 const update_all_dates = (input) => {
-    let date = new Date().getTime();
-    date = new Date(date);
+    let date = new Date();
     today = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
 
-    date = new Date().getTime() + 86400000;
+    date = Date.now() + 86400000;
     date = new Date(date);
     tomorrow = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
 
-    date = new Date().getTime() - 86400000;
+    date = Date.now() - 86400000;
     date = new Date(date);
     yesterday = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
   },
