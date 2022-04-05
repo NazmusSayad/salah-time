@@ -1,8 +1,8 @@
 const config = {
-  method: cookie.get("method") ? cookie.get("method") : "Karachi",
-  juristic: cookie.get("juristic") ? cookie.get("juristic") : "Hanafi",
-  latitude: cookie.get("latitude") ? cookie.get("latitude") : null,
-  longitude: cookie.get("longitude") ? cookie.get("longitude") : null,
+  method: localStorage.getItem("method") ? localStorage.getItem("method") : "Karachi",
+  juristic: localStorage.getItem("juristic") ? localStorage.getItem("juristic") : "Hanafi",
+  latitude: localStorage.getItem("latitude") ? localStorage.getItem("latitude") : null,
+  longitude: localStorage.getItem("longitude") ? localStorage.getItem("longitude") : null,
   data: {
     today: {},
     other: {},
