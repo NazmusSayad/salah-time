@@ -1,0 +1,53 @@
+$color-white 
+	&: 
+		#eeeeee; 
+			$color-blue 
+				&: 
+					#4ecca3; 
+						$color-orange 
+							&: 
+								#ffd369; 
+									$color-dark-2 
+										&: 
+											#393e46; 
+												$color-dark 
+													&: 
+														#222831; 
+															@mixin 
+																center-position-absoulute 
+																	position: absolute 
+																	top: 50% 
+																	left: 50% 
+																	transform: translate(-50%, -50%) 
+$line-color-1 
+	&: 
+		$color-white; 
+			$line-color-2 
+				&: 
+					#aaa; 
+						$line-color-current 
+							&: 
+								orange; 
+									$line-color-next 
+										&: 
+											white; 
+												$line-color-currentFajr 
+													&: 
+														aqua; 
+															@keyframes 
+																animate-currentFajr 
+																	0% {
+    opacity: 0 
+50% 
+	transform: translate(-50%, -50%) scale(1) 
+	opacity: 0 
+	transform: translate(-50%, -50%) scale(1.33) 
+60% 
+	transform: translate(-50%, -50%) scale(1.33) 
+	opacity: 0.75 
+100% 
+	transform: translate(-50%, -50%) scale(3.5) 
+	opacity: 0 
+} 
+	@keyframes 
+		animate-next 
